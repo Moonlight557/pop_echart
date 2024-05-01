@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <title>ECharts</title>
   <!-- 引入 ECharts 文件 -->
   <script src="echarts.js"></script>
 </head>
+
 <body>
   <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
   <div id="main" style="width: 950px; height: 500px;"></div>
@@ -16,94 +18,96 @@
     // 指定图表的配置项和数据
     var option;
 
-option = {
-  tooltip: {
-    trigger: 'item',
-    formatter: '{a} <br/>{b}: {c} ({d}%)'
-  },
-  legend: {
-    data: [
-      '江苏段',
-      '南运河',
-      '北运河',
-      '里运河',
-      '中运河',
-      '鲁南运河',
-      '其他'
-    ]
-  },
-  series: [
-    {
-      name: '世界文化遗产河段/公里',
-      type: 'pie',
-      selectedMode: 'single',
-      radius: [0, '30%'],
-      label: {
-        position: 'inner',
-        fontSize: 14
+    option = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)'
       },
-      labelLine: {
-        show: false
+      legend: {
+        data: [
+          '江苏段',
+          '南运河',
+          '北运河',
+          '里运河',
+          '中运河',
+          '鲁南运河',
+          '其他'
+        ]
       },
-      data: [
-        { value: 325, name: '江苏段' },
-        { value: 686, name: '其余河段', selected: true }
-      ]
-    },
-    {
-      name: '大运河全长/公里',
-      type: 'pie',
-      radius: ['45%', '60%'],
-      labelLine: {
-        length: 30
-      },
-      label: {
-        formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-        backgroundColor: '#F6F8FC',
-        borderColor: '#8C8D8E',
-        borderWidth: 1,
-        borderRadius: 4,
-        rich: {
-          a: {
-            color: '#6E7079',
-            lineHeight: 22,
-            align: 'center'
+      series: [
+        {
+          name: '世界文化遗产河段/公里',
+          type: 'pie',
+          selectedMode: 'single',
+          radius: [0, '30%'],
+          label: {
+            position: 'inner',
+            fontSize: 14
           },
-          hr: {
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: 325, name: '江苏段', itemStyle: { color: '#006D77' } },
+            { value: 686, name: '其余河段', selected: true, itemStyle: { color: '#83C5BE' } }
+          ]
+        },
+        {
+          name: '大运河全长/公里',
+          type: 'pie',
+          radius: ['45%', '60%'],
+          labelLine: {
+            length: 30
+          },
+          label: {
+            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+            backgroundColor: '#F6F8FC',
             borderColor: '#8C8D8E',
-            width: '100%',
             borderWidth: 1,
-            height: 0
+            borderRadius: 4,
+            rich: {
+              a: {
+                color: '#6E7079',
+                lineHeight: 22,
+                align: 'center'
+              },
+              hr: {
+                borderColor: '#8C8D8E',
+                width: '100%',
+                borderWidth: 1,
+                height: 0
+              },
+              b: {
+                color: '#4C5058',
+                fontSize: 14,
+                fontWeight: 'bold',
+                lineHeight: 33
+              },
+              per: {
+                color: '#fff',
+                backgroundColor: '#4C5058',
+                padding: [3, 4],
+                borderRadius: 4
+              }
+            }
           },
-          b: {
-            color: '#4C5058',
-            fontSize: 14,
-            fontWeight: 'bold',
-            lineHeight: 33
-          },
-          per: {
-            color: '#fff',
-            backgroundColor: '#4C5058',
-            padding: [3, 4],
-            borderRadius: 4
-          }
+          data: [
+            { value: 683, name: '江苏段', itemStyle: { color: '#006D77' } },
+            { value: 414, name: '南运河', itemStyle: { color: '#0077B6' } },
+            { value: 180, name: '北运河', itemStyle: { color: '#0096C7' } },
+            { value: 169, name: '里运河', itemStyle: { color: '#00B4D8' } },
+            { value: 163, name: '中运河', itemStyle: { color: '#48CAE4' } },
+            { value: 20, name: '鲁南运河', itemStyle: { color: '#ADE8F4' } },
+            { value: 168, name: '其他', itemStyle: { color: '#CAF0F8' } }
+          ]
         }
-      },
-      data: [
-        { value: 683, name: '江苏段' },
-        { value: 414, name: '南运河' },
-        { value: 180, name: '北运河' },
-        { value: 169, name: '里运河' },
-        { value: 163, name: '中运河' },
-        { value: 20, name: '鲁南运河' },
-        { value: 168, name: '其他' }
       ]
-    }
-  ]
-};
-
+    };
+    // https://coolors.co/03045e-023e8a-0077b6-0096c7-00b4d8-48cae4-90e0ef-ade8f4-caf0f8
+    // https://coolors.co/006d77-83c5be-edf6f9-ffddd2-e29578
     // 使用刚指定的配置项和数据显示图表。
     option && myChart.setOption(option);
   </script>
 </body>
+
 </html>
